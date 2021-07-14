@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Entities;
+using System;
 
 namespace Business
 {
@@ -7,7 +8,11 @@ namespace Business
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            //kkk
+            Account account = new Account();
+
+            //account.Balance = 10;
+            account.Deposit(1000);
+            Console.WriteLine(account.Balance);
         }
     }
 }
