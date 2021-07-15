@@ -7,11 +7,14 @@ namespace Business
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Account account = new Account();
 
+            Account account = new Account(02, "tais", 500);
+            Account ac1 = new SavingsAccount(01, "diego", 500, 0.5);
             //account.Balance = 10;
-            account.Deposit(1000);
+            account.Withdraw(10);
+            ac1.Withdraw(10);
+
+            Console.WriteLine(ac1.Balance);
             Console.WriteLine(account.Balance);
         }
     }
