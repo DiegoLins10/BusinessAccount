@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Business.Entities
 {
-    /******** SUPER CLASSE ***********/
-    class Account
+    /******** SUPER CLASSE ABSTRACT NAO PODE SER INSTANCIADAS ***********/
+    abstract class Account
     {
         public int Number { get; set; }
         public string Holder { get; set; }

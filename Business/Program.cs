@@ -1,5 +1,7 @@
 ﻿using Business.Entities;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Business
 {
@@ -7,17 +9,33 @@ namespace Business
     {
         static void Main(string[] args)
         {
+            List<Account> list = new List<Account>();
 
-            //Polimorfismo variaveis do mesmo tipo instanciados com objetos difrentes terao comportamento diferente.
-            Account ac2 = new Account(02, "tais", 500);
-            Account ac1 = new SavingsAccount(01, "diego", 500, 0.5);
-            //account.Balance = 10;
-            ac2.Withdraw(10);
-            ac1.Withdraw(10);
+            list.Add(new SavingsAccount(1001, "Alex", 500.00, 0.01));
+            list.Add(new BusinessAccount(1002, "Maria", 500.0, 400.0));
+            list.Add(new SavingsAccount(1004, "Bob", 500.0, 0.01));
+            list.Add(new BusinessAccount(1005, "Anna", 500.0, 500.0));
 
-            Console.WriteLine(ac2.Balance);
-            Console.WriteLine(ac1.Balance);
-            
-        }
+            double sum = 0.0;
+            foreach (Account acc in list)
+            {
+                sum += acc.Balance;
+            }
+
+            Console.WriteLine("Total balance: " + sum.ToString("F2", CultureInfo.InvariantCulture));
+
+            foreach (Account acc in list)
+            {
+                acc.Withdraw(10.0);
+            }
+            foreach (Account acc in list)
+            {
+                Console.WriteLine("Updated balance for account "
+                    + acc.Number
+                    + ": "
+                    + acc.Balance.ToString("F2", CultureInfo.InvariantCulture));
+            }
+
+            }
     }
 }
